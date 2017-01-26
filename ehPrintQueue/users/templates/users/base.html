@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthNet</title>
-    <!-- Core CSS - Include with every page -->
+    <title>EH Print Queue | {% block title %}{% endblock %}</title>
+    <!-- Core CSS - Include with every page -:->
     <!-- <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> -->
     <link rel="stylesheet" href="{% static 'html5up/assets/css/main.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/grayscale.css' %}"/>
@@ -39,6 +39,10 @@
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 {% block javascript %}
 {% endblock %}
+
+{% block content %}
+{% endblock %}
+
 <div id="footer-wrapper">
     <footer id="footer" class="container">
         <blockquote class="blockquote-reverse">
