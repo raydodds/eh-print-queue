@@ -1,0 +1,63 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthNet</title>
+    <!-- Core CSS - Include with every page -->
+    <!-- <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{% static 'html5up/assets/css/main.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/grayscale.css' %}"/>
+    <link rel="stylesheet" href="{% static 'fontawesome/css/font-awesome.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+
+<div id="page-wrapper">
+    <!-- Header -->
+    <div id="header-wrapper">
+        <header id="header" class="container">
+            <div class="row">
+                <div class="4u12u(mobile)">
+                    <div>
+                        <a id="logo" href="/home"><img src="{% static "img/EH.png" %}" alt="Engineering House"
+                                                       style="width:100px;height:100px;"></a>
+                    </div>
+                </div>
+                <div class="8u12u(mobile)">
+                    <br>
+                    <a style="font-size:200%;color:black;">Engineering House</a>
+                </div>
+            </div>
+        </header>
+    </div>
+    <!-- Copyright -->
+</div>
+<!-- Core Scripts - Include with every page -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% block javascript %}
+{% endblock %}
+<div id="footer-wrapper">
+    <footer id="footer" class="container">
+        <blockquote class="blockquote-reverse">
+            <h4>"I'd be lying ... if I ... said ... I didn't love ... [EHPrintQueue]"</h4>
+            <h5>Bill Gates, Multiple Instances</h5>
+        </blockquote>
+    </footer>
+</div>
+<div id="copyright">
+    Design: <a href="http://html5up.net">HTML5 UP</a>
+</div>
+
+<script src="{% static 'html5up/assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'html5up/assets/js/skel.min.js' %}"></script>
+<script src="{% static 'html5up/assets/js/skel-viewport.min.js' %}"></script>
+<script src="{% static 'html5up/assets/js/util.js' %}"></script>
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="{% static 'html5up/assets/js/main.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+
+</body>
+</html>
