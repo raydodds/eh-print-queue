@@ -1,13 +1,11 @@
 from django.shortcuts import render, render_to_response, redirect, HttpResponseRedirect
 from django.contrib.auth import login
-from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required, PermissionDenied
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate  # maybe works
 import datetime
 from .forms import *
 from . import models
-import random
 
 
 def get_date():
@@ -48,7 +46,7 @@ def show_activity_log(request):
         return render(request, 'users/invalid.html', {'d': get_date()})
 
 
-def login_view(request):
+def login(request):
     """
     Used to login, uses the LoginForm in users/forms.py
     :param request:
@@ -70,7 +68,7 @@ def login_view(request):
                 pass
             login(request, user)
 
-    return render(request, 'users/login.html', {{'d': get_date()}})
+    return render(request, 'users/login.html')
 
 
 @login_required(login_url='login')
@@ -91,7 +89,7 @@ def index(request):
     :param request:
     :return:
     """
-    return render(request, 'users/index.html', {'d': get_date()})
+    return render(request, 'users/index.html')
 
 
 @login_required(login_url='login')

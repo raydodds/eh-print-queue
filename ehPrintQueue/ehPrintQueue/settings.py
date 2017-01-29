@@ -22,7 +22,7 @@ SECRET_KEY = 'nk+_06%fgb*ca#khy=i=lqkc-&yh(4v1s_2(ld1w&6or823og)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tenebris.rh.rit.edu', 'localhost']
 
 STATIC_ROOT = os.path.join('static')
 
