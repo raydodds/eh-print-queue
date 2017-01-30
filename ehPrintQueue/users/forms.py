@@ -26,6 +26,10 @@ class RegisterForm(forms.ModelForm):
                                 label='Last Name')
     email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'example@example.com',
                                                             'class': 'form-control'}), label='Email Address')
+    isAdmin = forms.BooleanField(label='Administrator', required=False)
+
+    isCC = forms.BooleanField(label='Administrator', required=False)
+
 
     def clean_username(self):
         username = self.cleaned_data.get('username')

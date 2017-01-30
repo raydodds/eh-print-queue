@@ -21,19 +21,57 @@
         <header id="header" class="container">
             <div class="row">
                 <div class="12u">
-                    <div>
-                        <h1><a href="#" id="logo">EH Print Queue</a></h1>
-                    </div>
+                    {% if user.is_authenticated %}
+                        <div>
+                            <h1><a href="/home" id="logo">EH Print Queue</a></h1>
+                        </div>
+                    {% else %}
+                        <div>
+                            <h1><a href="/" id="logo">EH Print Queue</a></h1>
+                        </div>
+                    {% endif %}
                     <nav id="nav">
-                        <a href="/login">
-                            <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i>&nbsp;Sign In
-                        </a>
+                        {% if not user.is_authenticated %}
+                            <a href="/login">
+                                <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i>&nbsp;Log In
+                            </a>
+                        {% else %}
+                            <a href="/live-cam">
+                                <i class="fa fa-video-camera fa-fw" aria-hidden="true"></i>&nbsp;See What's Printing
+                            </a>
+                            {% if user.enduser.isAdmin %}
+                                <a href="/accounts/register">
+                                    <i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>&nbsp;Register
+                                </a>
+                            {% endif %}
+                            <a href="/logout">
+                                <i class="fa fa-sign-out fa-fw"></i>&nbsp;Log Out
+                            </a>
+                        {% endif %}
                     </nav>
                 </div>
             </div>
         </header>
+        <div id="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="8u 12u(mobile)">
+
+                        <!-- Banner Copy -->
+                        <p>"To the optimist, the glass is half full. To the pessimist, the glass is half empty.
+                            To the engineer, the glass is twice as big as it needs to be."</p>
+
+                    </div>
+                    <div class="4u 12u(mobile)" align="center">
+
+                        <!-- Banner Image -->
+                        <a href="#"><img src="{% static "img/EH-small.png" %}" alt=""/></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- Copyright -->
 </div>
 <!-- Core Scripts - Include with every page -->
 <script src="{% static 'js/jquery.min.js' %}"></script>

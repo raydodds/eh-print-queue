@@ -1,0 +1,41 @@
+{% extends 'users/base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="4u 12u(mobile)">
+                    </div>
+                    <div class="4u 12u(mobile)">
+                        <div class="login-panel panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Sign In</h3>
+                            </div>
+                            <div class="panel-body">
+                                <form method="post">{% csrf_token %}
+                                    <div align="center">
+                                        <table>
+                                            <tr>
+                                                <td>{{ form.username.label_tag }} </td>
+                                                <td>{{ form.username }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ form.password.label_tag }} </td>
+                                                <td>{{ form.password }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <br>
+                                    <div align="right">
+                                        <button type="submit" class="btn-success">Login</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

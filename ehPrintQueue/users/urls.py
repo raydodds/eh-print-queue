@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^profile$', views.profile, name='profile'),
     url(r'^profile/edit/$', views.edit_profile, name='UpdateProfile'),
     url(r'^log/$', views.show_activity_log, name='log'),
-    url(r'^register/$', views.register, name='register'),
+    url(r'^accounts/register/$', views.register, name='register'),
+    url(r'live-cam', views.printer_view, name='printer_view')
 ]

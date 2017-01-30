@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate  # maybe works
 import datetime
 from .forms import *
 from . import models
+from django.template import RequestContext
+from django.views.decorators.csrf import requires_csrf_token
 
 
 def get_date():
@@ -68,7 +70,8 @@ def login(request):
                 pass
             login(request, user)
 
-    return render(request, 'users/login.html')
+    return render(request, 'users/templates/registration/login.html')
+
 
 
 @login_required(login_url='login')
@@ -80,7 +83,7 @@ def home(request):
     :return:
     """
     user = request.user
-    return render(request, "users/home.html", {'user': user, 'd': get_date()})
+    return render(request, "users/home.html", {'user': user})
 
 
 def index(request):
@@ -96,7 +99,7 @@ def index(request):
 def profile(request):
     user = request.user
     if user.is_authenticated():
-        return render(request, "users/profile.html", {'user': user, 'd': get_date()})
+        return render(request, "users/profile.html", {'user': user})
 
     else:
         raise PermissionDenied
@@ -119,11 +122,10 @@ def edit_profile(request):
     token = {}
     token.update(request)
     token['form'] = form
-    token['d'] = get_date()
     token['user'] = user
     return render(request, "users/editProfile.html", token)
 
-
+@requires_csrf_token
 @login_required(login_url='login')
 def register(request):
     user = request.user
@@ -140,15 +142,27 @@ def register(request):
                                                last_name=last_name, email=email)
                 new_user.save()
                 new_e_user = new_user.enduser
+                if user.enduser.isCC:
+                    new_e_user.isAdmin = form.cleaned_data['isAdmin']
+                    new_e_user.isCC = form.cleaned_data['isCC']
                 new_e_user.save()
-                log_event(event="registered as " + new_user.username + ".", user=new_user.enduser)
+                log_event(event="registered" + new_user.first_name + " " + new_user.last_name, user=user.enduser)
                 return redirect('home')
         else:
             form = RegisterForm()
             token = {}
             token.update(request)
             token['form'] = form
-            token['d'] = get_date()
-            return render_to_response('users/register.html', token)
+            token['user'] = request.user
+            return render(request, 'users/register.html', token)
     else:
-        return render(request, 'users/invalid.html', {'d': get_date()})
+        token = {}
+        token['user'] = request.user
+        return render(request, 'users/invalid.html', token)
+
+
+@login_required(login_url='login')
+def printer_view(request):
+    user = request.user
+    log_event(event="viewed the live printer view.", user=user.enduser)
+    return render(request, 'users/printer_view.html', {'user': user})

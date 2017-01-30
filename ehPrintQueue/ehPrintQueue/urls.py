@@ -26,7 +26,7 @@ urlpatterns = [
                   url(r'^admin/', include(admin.site.urls)),
                   url(r'', include('users.urls')),  # All urls from users are at the base
                   url(r'^login/$', auth_views.login, name='login'),
-                  url(r'^logout/$', views.logout, {'next_page': '/login'}),
+                  url(r'^logout/$', views.logout, {'next_page': '/login'})
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL,
                                                                                            document_root=settings.MEDIA_ROOT)
