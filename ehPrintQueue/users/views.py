@@ -114,7 +114,7 @@ def edit_profile(request):
             user.email = form.cleaned_data.get('email')
             user.save()
             user.enduser.save()
-            log_event(event="changed their email", user=user.enduser)
+            log_event(event="edited their profile", user=user.enduser)
             return redirect('/home')
     else:
         form = editProfile(
