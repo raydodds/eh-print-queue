@@ -87,6 +87,26 @@
                                         {% endfor %}
                                     {% endif %}
                                 </div>
+                                {% if user.enduser.isCC %}
+                                    <h5>Is Admin:</h5>
+                                    <div>
+                                        {{ form.isAdmin }}
+                                    </div>
+                                    {% if form.isAdmin.errors %}
+                                        {% for error in form.isAdmin.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <h5>Is Computer Chairman:</h5>
+                                    <div>
+                                        {{ form.isCC }}
+                                    </div>
+                                    {% if form.isCC.errors %}
+                                        {% for error in form.isCC.errors %}
+                                            <p class="text-danger">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endif %}
                                 <br>
                                 <div align="right">
                                     <div class="form-actions">
