@@ -8,7 +8,9 @@ from .forms import *
 from . import models
 from django.template import RequestContext
 from django.views.decorators.csrf import requires_csrf_token
-
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.mail import EmailMessage
 
 def get_date():
     return datetime.datetime.now()
@@ -24,6 +26,15 @@ def log_event(user, event):
                               event=event,
                               date=str(datetime.datetime.now().date()),
                               time=str(datetime.datetime.now().time()))
+
+
+def send_email(request):
+   user = request.user
+   to = []
+   to.append(user.email)
+   email = EmailMessage('Subject', 'Body', to=to)
+   email.send()
+   return HttpResponseRedirect('/home')
 
 
 @login_required(login_url='login')
@@ -71,7 +82,6 @@ def login(request):
             login(request, user)
 
     return render(request, 'users/templates/registration/login.html')
-
 
 
 @login_required(login_url='login')
@@ -124,6 +134,7 @@ def edit_profile(request):
     token['form'] = form
     token['user'] = user
     return render(request, "users/editProfile.html", token)
+
 
 @requires_csrf_token
 @login_required(login_url='login')
