@@ -1,0 +1,27 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    <div id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="8u 12u(mobile)">
+                        <section>
+                            <a>Here can be your upcoming reservations</a>
+                        </section>
+                    </div>
+                    <div class="4u 12u(mobile)">
+                        <section>
+                            <a>Make a new reservation</a>
+                            <a>Send an email:</a>
+                            <a class="btn btn-success" style="color:white"
+                               href="{% url 'send_email' %}">
+                                email me!
+                            </a>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -54,9 +54,9 @@ def show_activity_log(request):
             pass
     loop.reverse()
     if user.enduser.isAdmin:
-        return render(request, 'users/activityLog.html', {'loop': loop, 'user': user})
+        return render(request, 'activityLog.html', {'loop': loop, 'user': user})
     else:
-        return render(request, 'users/invalid.html', {'d': get_date()})
+        return render(request, 'invalid.html', {'d': get_date()})
 
 
 def login(request):
@@ -81,7 +81,7 @@ def login(request):
                 pass
             login(request, user)
 
-    return render(request, 'users/templates/registration/login.html')
+    return render(request, 'login.html')
 
 
 @login_required(login_url='login')
@@ -93,7 +93,7 @@ def home(request):
     :return:
     """
     user = request.user
-    return render(request, "users/home.html", {'user': user})
+    return render(request, "home.html", {'user': user})
 
 
 def index(request):
@@ -102,14 +102,14 @@ def index(request):
     :param request:
     :return:
     """
-    return render(request, 'users/index.html')
+    return render(request, 'index.html')
 
 
 @login_required(login_url='login')
 def profile(request):
     user = request.user
     if user.is_authenticated():
-        return render(request, "users/profile.html", {'user': user})
+        return render(request, "profile.html", {'user': user})
 
     else:
         raise PermissionDenied
@@ -133,7 +133,7 @@ def edit_profile(request):
     token.update(request)
     token['form'] = form
     token['user'] = user
-    return render(request, "users/editProfile.html", token)
+    return render(request, "editProfile.html", token)
 
 
 @requires_csrf_token
@@ -165,15 +165,15 @@ def register(request):
             token.update(request)
             token['form'] = form
             token['user'] = request.user
-            return render(request, 'users/register.html', token)
+            return render(request, 'users/templates/register.html', token)
     else:
         token = {}
         token['user'] = request.user
-        return render(request, 'users/invalid.html', token)
+        return render(request, 'users/templates/invalid.html', token)
 
 
 @login_required(login_url='login')
 def printer_view(request):
     user = request.user
     log_event(event="viewed the live printer view.", user=user.enduser)
-    return render(request, 'users/printer_view.html', {'user': user})
+    return render(request, 'users/templates/printer_view.html', {'user': user})
