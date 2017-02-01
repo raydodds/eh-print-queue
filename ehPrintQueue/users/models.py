@@ -38,3 +38,18 @@ class log(models.Model):
 
     def __str__(self):
         return str(self.date) + " " + str(self.time) + " " + str(self.user) + ": " + str(self.event)
+
+class printEvent(models.Model):
+	# Marks the time the print block will begin.
+	startTime = models.DateTimeField()
+
+	# Marks the length of the print block.
+	duration = models.TimeField()
+
+	# Denotes which user is printing.
+	user = models.ForeignKey('enduser', blank=False, null=False)
+
+	# Denotes how many grams of filament were used in the print.
+	printAmount = models.IntegerField()
+
+
