@@ -13,6 +13,7 @@ class endUser(models.Model):
     isAdmin = models.BooleanField(default=False)
     # Allows Computer Chairman to view pertinent information.
     isCC = models.BooleanField(default=False)
+    weight = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.last_name+", "+self.user.first_name

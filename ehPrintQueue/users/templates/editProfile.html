@@ -1,0 +1,33 @@
+{% extends "users/base.html" %}
+{% block content %}
+        <form method="POST" class="" >{% csrf_token %}
+        <div id="content-wrapper">
+            <div id ="content">
+                <div class = "container">
+                    <div align = "center">
+                        <header>
+                            <h1>Edit Profile</h1>
+                        </header>
+                    </div>
+                    <div class="row">
+                        <div class="4u 12u(mobile)"></div>
+                        <div class="4u 12u(mobile)">
+                            <section>
+                                <h5>Email:</h5>
+                                <div class="input-group margin-bottom-xs">
+                                    <span class="input-group-addon"><i class="fa fa-user-o fa-lg fa-fw"></i></span>
+                                    {{ form.email }}
+                                </div>
+                                </br>
+                                <div class="form-actions" align="center">
+                                    <button class="btn btn-success" type="submit">
+                                        <i class="fa fa-floppy-o fa-fw" aria-hidden="true"></i>&nbsp;Update</button>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
