@@ -39,6 +39,9 @@ class log(models.Model):
     def __str__(self):
         return str(self.date) + " " + str(self.time) + " " + str(self.user) + ": " + str(self.event)
 
+"""
+Class which deals with printing events.
+"""
 class printEvent(models.Model):
 	# Marks the time the print block will begin.
 	startTime = models.DateTimeField()
@@ -52,4 +55,7 @@ class printEvent(models.Model):
 	# Denotes how many grams of filament were used in the print.
 	printAmount = models.IntegerField()
 
+	# Marks whether an admin has approved the print.
+	approved = models.BooleanField(default=False)
 
+	

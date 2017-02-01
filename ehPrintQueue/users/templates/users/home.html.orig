@@ -1,8 +1,16 @@
 {% extends 'users/base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}
+	Home
+{% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
+ <p>
+    THIS IS THE HOMEPAGE!!!
+ </p>
+{% endblock %}
+=======
     <div id="content-wrapper">
         <div id="content">
             <div class="container">
@@ -27,3 +35,4 @@
         </div>
     </div>
 {% endblock %}
+>>>>>>> 04acc8e8cf8bbc1e1689bf4b83f80c7401ba49f6

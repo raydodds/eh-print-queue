@@ -1,6 +1,7 @@
 {% extends "users/base.html" %}
+{% block title %}Edit Profile{% endblock %}
 {% block content %}
-        <form method="POST" class="" >{% csrf_token %}
+    <form method="POST" class="" >{% csrf_token %}
         <div id="content-wrapper">
             <div id ="content">
                 <div class = "container">
@@ -21,7 +22,13 @@
                                 </br>
                                 <div class="form-actions" align="center">
                                     <button class="btn btn-success" type="submit">
-                                        <i class="fa fa-floppy-o fa-fw" aria-hidden="true"></i>&nbsp;Update</button>
+                                        <span class="fa fa-floppy-o fa-fw" aria-hidden="true">
+										</span>&nbsp;Update
+									</button>
+									<a href="/profile" class="btn btn-success">
+										<span class="fa fa-close fa-fw" aria-hidden="true">
+										</span>&nbsp;Cancel
+									</a>
                                 </div>
                             </section>
                         </div>
